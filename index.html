@@ -77,45 +77,43 @@ button{
 <div class="card" id="card">
     <h1>Avena 💗</h1>
     <p>Will you be my Valentine’s, beboo?? 🥹💗</p>
-    <button class="yes" onclick="yesClicked()">YES 💖</button>
-    <button class="no" onclick="noClicked()">NO 😢</button>
+    <button class="yes" onclick="yesPage()">YES 💖</button>
+    <button class="no" onclick="noError()">NO 😢</button>
 </div>
-
-<!-- HAPPY GUITAR MUSIC -->
-<audio id="music" loop preload="auto">
-    <source src="guitar.mp3" type="audio/mpeg">
-</audio>
 
 <script>
 const card = document.getElementById("card");
-const music = document.getElementById("music");
 
-/* YES FLOW */
-function yesClicked(){
+/* YES PAGE */
+function yesPage(){
     card.innerHTML = `
         <h1>Lock kiya jaye? 😏🔒</h1>
-        <button class="yes" onclick="finalYes()">Hanji 💖</button>
-        <button class="yes" onclick="finalYes()">Hannnnjiiii 💕</button>
+        <button class="yes" onclick="finalPage()">Hanji 💖</button>
+        <button class="yes" onclick="finalPage()">Hannnnjiiii 💕</button>
     `;
 }
 
-/* NO → ERROR PAGE */
-function noClicked(){
+/* NO ERROR PAGE */
+function noError(){
     card.innerHTML = `
-        <h1>Error 😭💔</h1>
-        <p>
-            Something went wrong…<br><br>
-            ❌ Option NOT supported<br>
-            💔 Please try again
-        </p>
-        <button class="yes" onclick="yesClicked()">Try Again 💗</button>
+        <h1>Error 🚫</h1>
+        <p>NO is not supported ❌💔</p>
+        <button class="yes" onclick="backToQuestion()">Try Again 💗</button>
     `;
 }
 
-/* FINAL YES */
-function finalYes(){
-    music.play();   // 🎸 music starts here (safe click)
+/* BACK TO YES / NO */
+function backToQuestion(){
+    card.innerHTML = `
+        <h1>Avena 💗</h1>
+        <p>Will you be my Valentine’s, beboo?? 🥹💗</p>
+        <button class="yes" onclick="yesPage()">YES 💖</button>
+        <button class="no" onclick="noError()">NO 😢</button>
+    `;
+}
 
+/* FINAL PAGE */
+function finalPage(){
     card.innerHTML = `
         <h1>Happy Valentine’s Day Baby 💗</h1>
         <p>
@@ -126,7 +124,6 @@ function finalYes(){
             <strong>– Apka novro Joylan..</strong>
         </p>
     `;
-
     startHearts();
 }
 
